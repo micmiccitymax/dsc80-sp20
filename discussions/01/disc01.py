@@ -1,11 +1,10 @@
-
 import numpy as np
 import os
 
 def data2array(filepath):
     """
-    data2array takes in the filepath of a 
-    data file like `restaurant.csv` in 
+    data2array takes in the filepath of a
+    data file like `restaurant.csv` in
     data directory, and returns a 1d array
     of data.
 
@@ -19,14 +18,18 @@ def data2array(filepath):
     >>> arr.shape[0]
     100000
     """
-
-    return ...
+    f = open(filepath, 'r')
+    f.readline()
+    data = np.array([])
+    for line in f:
+        data = np.append(data, float(line))
+    return data
 
 
 def ends_in_9(arr):
     """
-    ends_in_9 takes in an array of dollar amounts 
-    and returns the proprtion of values that end 
+    ends_in_9 takes in an array of dollar amounts
+    and returns the proprtion of values that end
     in 9 in the hundredths place.
 
     :Example:
@@ -35,5 +38,6 @@ def ends_in_9(arr):
     >>> 0 <= out <= 1
     True
     """
-
-    return ...
+    boolean_array = np.round(arr * 100) % 10 == 9
+    mean_of_array = np.mean(boolean_array)
+    return mean_of_array
